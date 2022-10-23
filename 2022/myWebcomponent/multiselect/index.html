@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <my-multi-select>
+            <select multiple>
+                <option value="111" selected>111</option>
+                <option value="222"  selected>222</option>
+                <option value="333">333</option>
+                <option value="444">444</option>
+                <option value="555">555</option>
+                <option value="666">666</option>
+            </select>
+        </my-multi-select>
+        <button type="submit">Submit</button>
+    </form>
+    <script type="module">
+        import { MyMultiSelect } from './select.js'
+        customElements.define("my-multi-select", MyMultiSelect);
+        const FormNode = document.getElementById("form");
+        FormNode.addEventListener("submit", (e) => {
+            e.preventDefault();
+            console.log(FormNode.elements[0].value);
+        });
+    </script>
+</body>
+</html>

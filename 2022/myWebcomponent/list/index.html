@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <my-list id='my-list' height="500" width="120" itemSize="100 " itemCount="15">
+        <my-list-item><img src="https://fakeimg.pl/98x98/ff0000/?text=1" loading="lazy"></my-list-item>
+        <my-list-item><img src="https://fakeimg.pl/98x98/00ff00/?text=2" loading="lazy"></my-list-item>
+        <my-list-item><img src="https://fakeimg.pl/98x98/0000ff/?text=3" loading="lazy"></my-list-item>
+        <my-list-item><img src="https://fakeimg.pl/98x98/ff0000/?text=4" loading="lazy"></my-list-item>
+        <my-list-item><img src="https://fakeimg.pl/98x98/00ff00/?text=5" loading="lazy"></my-list-item>
+        <my-list-item><img src="https://fakeimg.pl/98x98/0000ff/?text=6" loading="lazy"></my-list-item>
+        <my-list-item><img src="https://fakeimg.pl/98x98/ff0000/?text=7" loading="lazy"></my-list-item>
+        <my-list-item><img src="https://fakeimg.pl/98x98/00ff00/?text=8" loading="lazy"></my-list-item>
+        <my-list-item><img src="https://fakeimg.pl/98x98/0000ff/?text=9" loading="lazy"></my-list-item>
+        <my-list-item><img src="https://fakeimg.pl/98x98/ff0000/?text=10" loading="lazy"></my-list-item>
+        <my-list-item><img src="https://fakeimg.pl/98x98/00ff00/?text=11" loading="lazy"></my-list-item>
+        <my-list-item><img src="https://fakeimg.pl/98x98/0000ff/?text=12" loading="lazy"></my-list-item>
+        <my-list-item><img src="https://fakeimg.pl/98x98/ff0000/?text=13" loading="lazy"></my-list-item>
+        <my-list-item><img src="https://fakeimg.pl/98x98/00ff00/?text=14" loading="lazy"></my-list-item>
+        <my-list-item><img src="https://fakeimg.pl/98x98/0000ff/?text=15" loading="lazy"></my-list-item>
+    </my-list>
+    <script type="module">
+        import { myList, myListItem } from "./list.js";
+        customElements.define("my-list", myList);
+        customElements.define("my-list-item", myListItem);
+        const list = document.getElementById("my-list");
+        list.addEventListener("handleAddItem", (e) => {
+            const indexArr = e.detail.indexArr
+            return indexArr.forEach((index) => {
+                const item = document.createElement("my-list-item");
+                if (index % 3 === 0) {
+                    item.innerHTML = `<img src="https://fakeimg.pl/98x98/ff0000/?text=${index + 1}" loading="lazy">`;
+                } else if (index % 3 === 1) {
+                    item.innerHTML = `<img src="https://fakeimg.pl/98x98/00ff00/?text=${index + 1}" loading="lazy">`;
+                } else {
+                    item.innerHTML = `<img src="https://fakeimg.pl/98x98/0000ff/?text=${index + 1}" loading="lazy">`;
+                }
+                list.appendChild(item);
+            })
+        });
+        list.addEventListener('addItemFinish', () => {
+            console.log('addItemFinish')
+        })
+    </script>
+</body>
+</html>
