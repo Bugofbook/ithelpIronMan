@@ -5,26 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    <form id="form">
-        <my-single-select>
-            <select id="select">
-                <option value="1">1</option>
-                <option value="2" selected>2</option>
-                <option value="3">3</option>
-            </select>
-        </my-single-select>
-        <button type="submit">Submit</button>
-    </form>
     <script type="module">
-        import { MySingleSelect } from "./select.js";
-        customElements.define("my-single-select", MySingleSelect);
-        const FormNode = document.getElementById("form");
-        FormNode.addEventListener("submit", (e) => {
-            e.preventDefault();
-            console.log(FormNode.elements[0].value);
-        });
+        import { todoItemJS } from './todoitem.js';
+        import { WebTodoItem } from './webtodoItem.js';
+        customElements.define('web-todo-item', WebTodoItem);
+        const bodyNode = document.getElementById('body');
+        todoItemJS({parentNode: bodyNode});
     </script>
+</head>
+<body id="body">
+    <web-todo-item></web-todo-item>
 </body>
 </html>

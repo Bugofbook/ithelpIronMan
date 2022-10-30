@@ -1,14 +1,10 @@
-class TodoItem extends HTMLElement {
+class WebTodoItem extends HTMLElement {
     constructor() {
         super();
         this.render = this.render.bind(this);
-    }
-
-    connectedCallback() {
-        this.innerHTML= this.render()
+        this.appendChild(this.render())
     }
     render() {
-        // render the element
         const rootArticle = document.createElement('article');
         rootArticle.classList.add('todo-item');
         rootArticle.innerHTML= `
@@ -25,5 +21,5 @@ class TodoItem extends HTMLElement {
 }
 
 export {
-    TodoItem
+    WebTodoItem
 }

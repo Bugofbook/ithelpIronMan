@@ -1,17 +1,23 @@
-class MyElement extends HTMLElement {
+// standard web component
+class MyWebComponent extends HTMLElement {
     constructor() {
-        super();
-        this.render = this.render.bind(this);
+        super()
     }
-
     connectedCallback() {
-        this.innerHTML= this.render()
+        
     }
-    render() {
-        return <div>Hallo World!</div>
-    }
-}
+    disconnectedCallback() {
 
-export {
-    MyElement
+    }
+    static get observedAttributes() {
+        // 和下面的的方法組合，用來指定監聽屬性的名稱
+        return [];
+    }
+    attributeChangedCallback(name, oldValue, newValue) {
+
+    }
+    adoptedCallback() {
+
+    }
+
 }
